@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: galoucura
+      POSTGRES_DB: meu_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  backend:
+    build: ./back
+    container_name: backend-app
+    environment:
+      DATABASE_URL: postgres://postgres:galoucura@postgres-db:5432/meu_db
+      MONGO_URL: mongodb+srv://pereiradiasrian:galoucura@cluster0.lncgv.mongodb.net/Users?retryWrites=true&w=majority&appName=Cluster0
+      JWT_SECRET: secret_key12345
+      PORT: 4000
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  frontend:
+    build: ./front/react-auth-app
+    container_name: frontend-app
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    command: ["npm", "run", "dev", "--", "--host"]
+    restart: unless-stopped
+volumes:
+  pgdata:
