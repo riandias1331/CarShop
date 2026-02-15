@@ -2,6 +2,8 @@ FROM node:latest
 
 WORKDIR /app
 
+COPY .env .env
+
 COPY . .
 
 # Remove a pasta node_modules se existir, para evitar conflitos
@@ -11,4 +13,4 @@ RUN npm install
 
 CMD ["npm", "start"]
 
-EXPOSE 8080
+EXPOSE 3333

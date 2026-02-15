@@ -89,6 +89,7 @@ app.get('/health/db', (_req, res) => __awaiter(void 0, void 0, void 0, function*
 // Database
 (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        // testar mongo
         yield (0, db_1.connectMongo)();
         // testar postgres
         yield db_1.default.query('SELECT 1');

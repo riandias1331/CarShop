@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './main.css'; // Estilos para a landing page
+import './Main.css'; // Estilos para a landing page
 
 export default function CarLandingPage() {
   const [email, setEmail] = useState('');

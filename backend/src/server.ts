@@ -47,6 +47,7 @@ app.get('/health/db', async (_req, res) => {
 // Database
 (async () => {
   try {
+    // testar mongo
     await connectMongo();
 
     // testar postgres

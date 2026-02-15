@@ -79,9 +79,9 @@ exports.testPgConnection = testPgConnection;
 // ESCOLHA A CONFIGURAÇÃO DESEJADA
 // ==============================================
 // OPÇÃO 1: Para PostgreSQL local (comente a linha abaixo para usar Neon)
-const poolConfig = localPoolConfig;
+// const poolConfig = localPoolConfig;
 // OPÇÃO 2: Para Neon (descomente a linha abaixo e comente a de cima)
-// const poolConfig = neonPoolConfig;
+const poolConfig = neonPoolConfig;
 // ==============================================
 // VALIDAÇÃO DAS VARIÁVEIS DE AMBIENTE
 // ==============================================
