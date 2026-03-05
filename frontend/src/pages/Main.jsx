@@ -89,6 +89,11 @@ export default function CarLandingPage() {
     setEmail('');
   };
 
+  // Função para ir para seção de carros
+  const goToCars = () => {
+  window.location.hash = 'cars';
+  };
+
   return (
     <div className="landing-container">
       
@@ -107,8 +112,8 @@ export default function CarLandingPage() {
         </nav>
         
         <div className="header-buttons">
-          <button onClick={goToLogin} className="btn-login">Entrar</button>
-          <button onClick={goToRegister} className="btn-register">Cadastrar</button>
+          {/* <button onClick={goToLogin} className="btn-login"></button> */}
+          <button onClick={goToRegister} className="btn-register">Sair</button>
         </div>
       </header>
 
@@ -119,7 +124,7 @@ export default function CarLandingPage() {
           <p>Os melhores veículos importados com procedência e garantia. Atendimento personalizado para clientes exigentes.</p>
           
           <div className="hero-buttons">
-            <button onClick={goToRegister} className="btn-primary">Ver Catálogo</button>
+            <button onClick={goToCars} className="btn-primary">Ver Catálogo</button>
             <button className="btn-secondary">Falar com Consultor</button>
           </div>
           
@@ -172,7 +177,8 @@ export default function CarLandingPage() {
         </div>
         
         <div className="view-all">
-          <button onClick={goToRegister} className="btn-view-all">
+          <button  className="btn-view-all">
+          {/* <button onClick={goToRegister} className="btn-view-all"> */}
             Ver Todos os Carros →
           </button>
         </div>
