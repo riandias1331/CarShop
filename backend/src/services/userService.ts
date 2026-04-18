@@ -10,8 +10,7 @@ export const getUserByIdService = async (id: string) => {
 
 export const createUserService = async (userData: Partial<IUser>) => {
     // Como usamos o pre('save') no model, a senha será hashada automaticamente aqui
-    const user = new User(userData);
-    return await user.save();
+    return await User.create(userData);
 };
 
 export const updateUserService = async (id: string, updateData: Partial<IUser>) => {
